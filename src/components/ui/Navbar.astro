@@ -28,7 +28,9 @@ import bars from "../../assets/bars.svg";
 import brand from "../../assets/brand.svg";
 ---
 
-<div class="bg-[#fff] sticky top-0 z-10 h-auto flex justify-center">
+<div
+  class="bg-[#fff] fixed w-full top-0 z-10 py-[30px] h-auto flex justify-center"
+>
   <nav
     aria-label="Main Navigation"
     role="navigation"
@@ -82,21 +84,9 @@ import brand from "../../assets/brand.svg";
   </nav>
 </div>
 <script>
-  import Lenis from "lenis";
   document.addEventListener("DOMContentLoaded", (_) => {
-    const lenis = new Lenis();
-
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-
-    /* Make the script safe to run only when everything loads */
     const menuButton = document.getElementById("menuButton");
     const navMenu = document.getElementById("navmenu");
-    const anchorLinks = document.querySelectorAll('a[href^="#"]');
 
     let isMenuOpen = false;
 
@@ -121,18 +111,6 @@ import brand from "../../assets/brand.svg";
           navMenu.style.height = "0px";
           navMenu.classList.remove("h-auto");
         }
-      });
-
-      anchorLinks.forEach((link) => {
-        link.addEventListener("click", (e) => {
-          e.preventDefault();
-
-          const t = e.currentTarget as Element;
-
-          if (t) {
-            lenis.scrollTo(t.getAttribute("href") ?? "");
-          }
-        });
       });
 
       window.addEventListener("resize", () => {
