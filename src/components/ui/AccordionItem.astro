@@ -1,0 +1,127 @@
+---
+type Props = {
+  title: string;
+  description: string;
+};
+
+const { title, description } = Astro.props;
+---
+
+<div
+  class="accordion__item group h-[60px] bg-slate-200 overflow-hidden w-full transition-all duration-500"
+>
+  <button
+    class="accordion__toggle w-full h-[60px] flex items-center justify-between cursor-pointer"
+    id={`${title} accordion__item menu button`}
+    aria-expanded="false"
+    aria-controls={`${title} accordion__item menu content`}
+  >
+    {title}
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="accordion__icon h-3 w-3 transition-transform duration-300"
+      aria-hidden="true"
+      width="24"
+      height="24"
+      viewBox="0 0 512 512"
+      ><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+      <path
+        d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+      ></path></svg
+    >
+  </button>
+  <div
+    id={`${title} accordion__item menu content`}
+    aria-labelledby={`${title} accordion__item menu button`}
+    class="accordion__content"
+  >
+    <p class="prose mb-4 mt-1 max-w-full transition-[height]">
+      {description}
+    </p>
+  </div>
+</div>
+<script>
+  function accordionSetup() {
+    const accordionItems = document.querySelectorAll(
+      ".accordion__item"
+    ) as NodeListOf<HTMLElement>;
+
+    accordionItems.forEach((accordionItem) => {
+      const accordionToggle = accordionItem.querySelector(".accordion__toggle");
+      const accordionIcon = accordionItem.querySelector(".accordion__icon");
+
+      if (accordionToggle && accordionIcon) {
+        accordionToggle.addEventListener("click", (e) => {
+          e.stopPropagation(); // prevent the event from bubbling up to the document
+
+          // Close other accordion items
+          accordionItems.forEach((otherAccordionItem) => {
+            if (
+              otherAccordionItem !== accordionItem &&
+              otherAccordionItem.classList.contains("active")
+            ) {
+              const otherAccordionToggle =
+                otherAccordionItem.querySelector(".accordion__toggle");
+              const otherAccordionIcon =
+                otherAccordionItem.querySelector(".accordion__icon");
+
+              if (otherAccordionToggle && otherAccordionIcon) {
+                otherAccordionItem.classList.remove("active");
+                otherAccordionToggle.setAttribute("aria-expanded", "false");
+                otherAccordionItem.style.height = "60px";
+                otherAccordionIcon.classList.remove("rotate-180");
+              }
+            }
+          });
+
+          // Close itself if it's open, otherwise open it
+          if (!accordionItem.classList.contains("active")) {
+            accordionItem.classList.add("active");
+            accordionToggle.setAttribute("aria-expanded", "true");
+
+            // Set height according to content
+            accordionItem.style.height = accordionItem.scrollHeight + "px";
+            accordionIcon.classList.add("rotate-180");
+          } else {
+            accordionItem.classList.remove("active");
+            accordionToggle.setAttribute("aria-expanded", "false");
+
+            // Reset height. Accordion Items have Overflow hidden so when it's
+            // height is 60, because the toggle's height is 60, the content is hidden
+            accordionItem.style.height = "60px";
+            accordionIcon.classList.remove("rotate-180");
+          }
+
+          e.preventDefault();
+          return false;
+        });
+      }
+    });
+
+    // Close the accordion when clicking outside of it
+    document.addEventListener("click", (event) => {
+      accordionItems.forEach((accordionItem) => {
+        const accordionToggle =
+          accordionItem.querySelector(".accordion__toggle");
+        const accordionIcon = accordionItem.querySelector(".accordion__icon");
+
+        if (
+          accordionToggle &&
+          accordionIcon &&
+          !accordionItem.contains(event.target as Node)
+        ) {
+          accordionItem.classList.remove("active");
+          accordionToggle.setAttribute("aria-expanded", "false");
+
+          // Reset height. Overflow gets hidden
+          accordionItem.style.height = "60px";
+          accordionIcon.classList.remove("rotate-180");
+        }
+      });
+    });
+  }
+
+  // Run on page swap
+  accordionSetup();
+  document.addEventListener("astro:after-swap", accordionSetup);
+</script>

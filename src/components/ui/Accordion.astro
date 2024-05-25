@@ -1,0 +1,24 @@
+---
+import AccordionItem from "./AccordionItem.astro";
+
+const content = [
+  {
+    title: "First item",
+    description: "This is the first item",
+  },
+  {
+    title: "Second item",
+    description: "This is the second item",
+  },
+  {
+    title: "Third item",
+    description: "This is the third item",
+  },
+];
+---
+
+{
+  content.map((item) => {
+    return <AccordionItem title={item.title} description={item.description} />;
+  })
+}

@@ -1,0 +1,69 @@
+---
+import { Image } from "astro:assets";
+import Facebook from "../../assets/facebook.svg";
+import Linkedin from "../../assets/linkedin.svg";
+import Twitter from "../../assets/twitter.svg";
+
+const logos = [
+  { name: "Facebook", src: Facebook },
+  { name: "Linkedin", src: Linkedin },
+  { name: "Twitter", src: Twitter },
+];
+
+const links = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Services", href: "/services" },
+  { name: "Contact", href: "/contact" },
+  { name: "Questions", href: "/questions" },
+  { name: "See More", href: "/see-more" },
+];
+---
+
+<section class="p-[30px] w-full max-w-[1366px]">
+  <div class="px-[15px] bg-dark text-white lg:px-[60px]">
+    <div
+      class="p-[100px] h-[180px] flex md:flex-row w-full flex-col justify-around items-center"
+    >
+      <h2 class="max-w-none">Services Subscribe</h2>
+      <div>Form Short</div>
+    </div>
+    <div
+      class="h-auto flex flex-col md:flex-row md:justify-between items-start md:items-center"
+    >
+      <ul class="flex flex-wrap mb-5 md:mb-0 gap-[30px] list-none font-medium">
+        {
+          links.map((link) => {
+            return (
+              <li>
+                <a href={link.href}>{link.name}</a>
+              </li>
+            );
+          })
+        }
+      </ul>
+      <ul class="flex gap-5">
+        {
+          logos.map((logo) => {
+            return (
+              <li>
+                <a href="/">
+                  <Image src={logo.src} alt={logo.name} class="w-6" />
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
+    <div class="h-[1px] bg-white"></div>
+    <div
+      class="flex flex-col h-20 justify-between items-start mt-4 md:flex-row md:items-center md:mt-0"
+    >
+      <span>@2024 Company name</span>&nbsp
+      <span>
+        <a href="/">Terms of use</a> & <a href="/">Privacy policy</a>
+      </span>
+    </div>
+  </div>
+</section>

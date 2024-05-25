@@ -1,0 +1,81 @@
+---
+const slides = [
+  { index: 1, name: "First", description: "This is the first slide" },
+  { index: 2, name: "Second", description: "This is the second slide" },
+  { index: 3, name: "Third", description: "This is the third slide" },
+  { index: 4, name: "Fourth", description: "This is the fourth slide" },
+  { index: 5, name: "Fifth", description: "This is the fifth slide" },
+  { index: 6, name: "Sixth", description: "This is the sixth slide" },
+  { index: 7, name: "Seventh", description: "This is the seventh slide" },
+  { index: 8, name: "Eighth", description: "This is the eighth slide" },
+  { index: 9, name: "Ninth", description: "This is the ninth slide" },
+];
+---
+
+<section id="ProjectSlider" class="swiper mt-10 h-auto">
+  <ul class="swiper-wrapper" data-cursor="swipe">
+    {
+      slides.map((slide) => (
+        <li
+          class="swiper-slide"
+          role="slider"
+          aria-label={`${slide.index} / ${slides.length}`}
+        >
+          <div class="flex flex-col justify-center items-center text-black h-40">
+            <h2>{slide.name}</h2>
+            <p>{slide.description}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+  <div class="flex justify-around mt-5">
+    <div class="swiper-button-prev">PREV</div>
+    <div class="swiper-button-next">NEXT</div>
+  </div>
+  <div class="flex justify-center">
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
+<script>
+  import "swiper/css";
+  import Swiper from "swiper";
+  import { register } from "swiper/element/bundle";
+  register();
+
+  const swiper = new Swiper("#ProjectSlider", {
+    loop: true,
+    autoplay: false,
+    grabCursor: false,
+    mousewheel: false,
+    slidesPerView: 3,
+    centeredSlides: true,
+    spaceBetween: 30,
+    pagination: {
+      el: ".swiper-pagination",
+      type: "fraction",
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+</script>
+<style>
+  .swiper-wrapper {
+    position: relative;
+  }
+  .swiper-slide {
+    display: flex;
+    background: #eee;
+    align-items: center;
+    justify-content: center;
+    transition: all 500ms ease-in-out;
+    scale: 0.8;
+  }
+
+  .swiper-slide-active {
+    scale: 1.1;
+    background: #fc0;
+  }
+</style>

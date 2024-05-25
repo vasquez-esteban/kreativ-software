@@ -1,0 +1,21 @@
+---
+import Accordion from "../components/ui/Accordion.astro";
+import SwiperSlider from "../components/ui/SwiperSlider.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+import "../styles/globals.css";
+---
+
+<MainLayout
+  title="Kreativ Software"
+  description="Kreativ ofrece servicios de diseño y desarrollo de software"
+>
+  <div class="p-10">
+    <Accordion />
+  </div>
+  <div>
+    <button class="btn-tertiary"> Primary Button </button>
+  </div>
+  <div class="p-10">
+    <SwiperSlider />
+  </div>
+</MainLayout>

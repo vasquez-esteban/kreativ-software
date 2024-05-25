@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Grotesk";
+    src: url("/fonts/grotesk/SpaceGrotesk-Regular.woff"), format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Grotesk";
+    src: url("/fonts/grotesk/SpaceGrotesk-Medium.woff"), format("woff");
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  :root {
+    --green: #b9ff66;
+    --black: rgb(0, 0, 0);
+    --dark: #191a23;
+    --white: #f3f3f3;
+  }
+
+  @layer base {
+    * {
+      box-sizing: border-box;
+      font-family: "Grotesk", sans-serif;
+    }
+
+    body {
+      font-size: 16px;
+    }
+
+    p {
+      font-size: 1.125rem;
+    }
+
+    h1 {
+      font-size: 3.75rem;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+    }
+
+    h3 {
+      font-size: 1.875rem;
+    }
+
+    h4 {
+      font-size: 1.25rem;
+    }
+
+    @media (max-width: 640px) {
+      p {
+        font-size: 1rem;
+      }
+
+      h1 {
+        font-size: 2.688rem;
+      }
+
+      h2 {
+        font-size: 2.25rem;
+      }
+
+      h3 {
+        font-size: 1.625rem;
+      }
+
+      h4 {
+        font-size: 1.125rem;
+      }
+    }
+  }
+
+  @layer components {
+    .btn-primary {
+      @apply bg-dark text-white rounded-lg;
+    }
+
+    .btn-secondary {
+      @apply bg-transparent text-black rounded-lg border border-solid border-black;
+    }
+
+    .btn-tertiary {
+      @apply bg-green text-black rounded-lg;
+    }
+
+    .greenhead {
+      @apply bg-green text-white;
+    }
+
+    .whitehead {
+      @apply bg-white text-black;
+    }
+
+    .blackhead {
+      @apply bg-black text-white;
+    }
+  }
+}
