@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import Facebook from "../../assets/facebook.svg";
 import Linkedin from "../../assets/linkedin.svg";
 import Twitter from "../../assets/twitter.svg";
+import Section from "./Section.astro";
 
 const logos = [
   { name: "Facebook", src: Facebook },
@@ -11,16 +12,15 @@ const logos = [
 ];
 
 const links = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Services", href: "/services" },
-  { name: "Contact", href: "/contact" },
-  { name: "Questions", href: "/questions" },
-  { name: "See More", href: "/see-more" },
+  { name: "About us", href: "#about" },
+  { name: "Services", href: "#services" },
+  { name: "Use Cases", href: "#usecases" },
+  { name: "Pricing", href: "#pricing" },
+  { name: "Blog", href: "#blog" },
 ];
 ---
 
-<section class="p-[30px] ml-auto mr-auto w-full max-w-[1366px]">
+<Section>
   <div class="px-[15px] bg-dark text-white lg:px-[60px]">
     <div
       class="p-[100px] h-[180px] flex md:flex-row w-full flex-col justify-around items-center"
@@ -66,4 +66,4 @@ const links = [
       </span>
     </div>
   </div>
-</section>
+</Section>

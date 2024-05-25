@@ -3,28 +3,24 @@ import { Image } from "astro:assets";
 
 const navLinks = [
   {
-    name: "Home",
-    href: "#",
+    name: "About us",
+    href: "#about",
   },
   {
-    name: "Service",
-    href: "/about",
+    name: "Services",
+    href: "#services",
   },
   {
-    name: "Feature",
-    href: "#",
+    name: "Use cases",
+    href: "#usecases",
   },
   {
-    name: "Product",
-    href: "#",
+    name: "Pricing",
+    href: "#pricing",
   },
   {
-    name: "Testimonial",
-    href: "#",
-  },
-  {
-    name: "FAQ",
-    href: "#",
+    name: "Blog",
+    href: "#blog",
   },
 ];
 
@@ -32,32 +28,32 @@ import bars from "../../assets/bars.svg";
 import brand from "../../assets/brand.svg";
 ---
 
-<div class="sticky top-0 z-10 h-32 flex justify-center bg-slate-400">
+<div class="bg-[#fff] sticky top-0 z-10 h-auto flex justify-center">
   <nav
     aria-label="Main Navigation"
     role="navigation"
     class="w-full flex h-full items-center justify-between"
-    style="max-width: 1300px;"
+    style="max-width: 1240px;"
   >
     <!-- Brand -->
-    <div class="pl-4 lg:flex-none">
-      <a href="/">
-        <Image src={brand} alt="Brand Logo" class="w-5" />
+    <div class="pl-4 xl:flex-none">
+      <a href="#home">
+        <Image src={brand} alt="Brand Logo" class="w-[219px]" />
       </a>
     </div>
 
     <!-- Nav Menu -->
     <div
       id="navmenu"
-      class="bg-slate-400 w-full absolute top-full z-10 lg:static lg:flex lg:flex-grow lg:items-center lg:justify-between lg:pr-4 overflow-hidden transition-height duration-500 h-0 lg:h-auto"
+      class="bg-[#fff] w-full absolute top-full z-10 xl:static xl:flex xl:flex-grow xl:items-center xl:justify-center xl:pr-4 overflow-hidden transition-height duration-500 h-0 xl:h-auto"
     >
       <!-- Nav Links -->
-      <ul class="lg:flex lg:flex-grow lg:justify-center lg:gap-14">
+      <ul class="xl:flex xl:flex-grow xl:justify-end xl:gap-10">
         {
           navLinks.map((link) => {
             return (
-              <li class="mx-4 p-4 lg:mx-0 px-0">
-                <a href={link.href} class="block">
+              <li class="mx-4 p-4 xl:mx-0 px-0">
+                <a id={link.name} href={link.href} class="block">
                   {link.name}
                 </a>
               </li>
@@ -67,12 +63,8 @@ import brand from "../../assets/brand.svg";
       </ul>
 
       <!-- Login -->
-      <div class="flex lg:flex-row lg:items-center lg:gap-4 flex-col">
-        <a class="m-4 lg:m-0" href="#">Login</a>
-        <button
-          class="bg-slate-300 m-4 lg:m-0 px-4 py-2 rounded-md w-24 mb-4 lg:mb-0"
-          >Sign up</button
-        >
+      <div class="flex xl:flex-row xl:items-center px-4 xl:gap-4 flex-col">
+        <button class="btn-secondary xl:ml-10">Request a quote</button>
       </div>
     </div>
 
@@ -83,17 +75,28 @@ import brand from "../../assets/brand.svg";
       aria-controls="navmenu"
       aria-expanded="false"
       id="menuButton"
-      class="w-10 lg:hidden pr-4 cursor-pointer"
+      class="w-12 h-12 xl:hidden pr-4 cursor-pointer"
     >
       <Image src={bars} alt="hamburgerIcon" class="hamburgerIcon" />
     </button>
   </nav>
 </div>
 <script>
+  import Lenis from "lenis";
   document.addEventListener("DOMContentLoaded", (_) => {
+    const lenis = new Lenis();
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
     /* Make the script safe to run only when everything loads */
     const menuButton = document.getElementById("menuButton");
     const navMenu = document.getElementById("navmenu");
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
 
     let isMenuOpen = false;
 
@@ -120,9 +123,21 @@ import brand from "../../assets/brand.svg";
         }
       });
 
+      anchorLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+
+          const t = e.currentTarget as Element;
+
+          if (t) {
+            lenis.scrollTo(t.getAttribute("href") ?? "");
+          }
+        });
+      });
+
       window.addEventListener("resize", () => {
         /* Resize cleanup screen state*/
-        if (window.innerWidth >= 1024) {
+        if (window.innerWidth >= 1280) {
           /* Add height if menu was closed and then resize happened */
           navMenu.style.height = "auto";
           navMenu.classList.remove("h-0");
