@@ -35,7 +35,7 @@ import brand from "../../assets/brand.svg";
     aria-label="Main Navigation"
     role="navigation"
     class="w-full flex h-full items-center justify-between"
-    style="max-width: 1240px;"
+    style="max-width: 1280px;"
   >
     <!-- Brand -->
     <div class="pl-4 xl:flex-none">
@@ -47,10 +47,10 @@ import brand from "../../assets/brand.svg";
     <!-- Nav Menu -->
     <div
       id="navmenu"
-      class="bg-[#fff] w-full absolute top-full z-10 xl:static xl:flex xl:flex-grow xl:items-center xl:justify-center xl:pr-4 overflow-hidden transition-height duration-500 h-0 xl:h-auto"
+      class="bg-[#fff] w-full absolute top-full z-10 xl:static xl:flex xl:flex-grow xl:items-center xl:justify-center overflow-hidden transition-height duration-500 h-0 xl:h-auto"
     >
       <!-- Nav Links -->
-      <ul class="xl:flex xl:flex-grow xl:justify-end xl:gap-10">
+      <ul class="xl:flex xl:flex-grow xl:justify-center xl:gap-10">
         {
           navLinks.map((link) => {
             return (
@@ -66,7 +66,7 @@ import brand from "../../assets/brand.svg";
 
       <!-- Login -->
       <div class="flex xl:flex-row xl:items-center px-4 xl:gap-4 flex-col">
-        <button class="btn-secondary xl:ml-10">Request a quote</button>
+        <button class="btn-secondary">Request a quote</button>
       </div>
     </div>
 
