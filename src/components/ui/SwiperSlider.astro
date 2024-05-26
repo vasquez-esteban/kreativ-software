@@ -13,22 +13,22 @@ const slides = [
 ---
 
 <section id="ProjectSlider" class="swiper mt-10 h-auto">
-  <ul class="swiper-wrapper" data-cursor="swipe">
+  <div class="swiper-wrapper" data-cursor="swipe">
     {
       slides.map((slide) => (
-        <li
+        <div
           class="swiper-slide"
-          role="slider"
+          role="group"
           aria-label={`${slide.index} / ${slides.length}`}
         >
           <div class="flex flex-col justify-center items-center text-black h-40">
             <h2>{slide.name}</h2>
             <p>{slide.description}</p>
           </div>
-        </li>
+        </div>
       ))
     }
-  </ul>
+  </div>
   <div class="flex justify-around mt-5">
     <div class="swiper-button-prev">PREV</div>
     <div class="swiper-button-next">NEXT</div>
