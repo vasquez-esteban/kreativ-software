@@ -2,13 +2,15 @@
 import { Image } from "astro:assets";
 import Facebook from "../../assets/facebook.svg";
 import Linkedin from "../../assets/linkedin.svg";
+import Logo from "../../assets/logo-alt.svg";
 import Twitter from "../../assets/twitter.svg";
-import Section from "./Section.astro";
+import Section from "../sections/Section.astro";
+import ShortForm from "../ui/ShortForm.astro";
 
 const logos = [
-  { name: "Facebook", src: Facebook },
-  { name: "Linkedin", src: Linkedin },
-  { name: "Twitter", src: Twitter },
+  { name: "Facebook", src: Facebook, link: "https://facebook.com" },
+  { name: "Linkedin", src: Linkedin, link: "https://linkedin.com" },
+  { name: "Twitter", src: Twitter, link: "https://twitter.com" },
 ];
 
 const links = [
@@ -21,46 +23,68 @@ const links = [
 ---
 
 <Section>
-  <div class="px-[15px] bg-dark text-white lg:px-[60px]">
-    <div
-      class="p-[100px] h-[180px] flex md:flex-row w-full flex-col justify-around items-center"
-    >
-      <h2 class="max-w-none">Services Subscribe</h2>
-      <div>Form Short</div>
+  <div
+    class="px-[15px] bg-dark text-white py-[55px] lg:px-[60px] rounded-t-[45px]"
+  >
+    <div>
+      <div class="flex flex-col lg:flex-row gap-7 items-center justify-between">
+        <picture>
+          <a href="#home">
+            <Image src={Logo} alt="Logo for Kreatif Brand" />
+          </a>
+        </picture>
+        <ul class="flex flex-col sm:flex-row gap-5">
+          {
+            links.map((link) => {
+              return (
+                <li class="text-center">
+                  <a class="underline" href={link.href}>
+                    {link.name}
+                  </a>
+                </li>
+              );
+            })
+          }
+        </ul>
+        <ul class="flex gap-5">
+          {
+            logos.map((logo) => {
+              return (
+                <li>
+                  <a href={logo.link} target="_blank">
+                    <picture>
+                      <Image src={logo.src} alt={logo.name} />
+                    </picture>
+                  </a>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </div>
+
+      <div class="flex flex-col lg:flex-row mt-[66px] mb-[51px]">
+        <div class="flex text-center lg:text-start flex-col w-full lg:w-[30%]">
+          <h3 class="mb-5">Contact us:</h3>
+          <div class="flex flex-col justify-between gap-4">
+            <span> Email: examplemail.com </span>
+            <span> Phone: +123 456 789 </span>
+            <span class="lg:w-3/4">
+              Address: 1234 Street Name, City Name, Country Name
+            </span>
+          </div>
+        </div>
+        <div class="flex-grow my-10 lg:my-0 lg:ml-12">
+          <ShortForm />
+        </div>
+      </div>
     </div>
+
+    <div class="h-[1px] bg-white mb-5"></div>
     <div
-      class="h-auto flex flex-col md:flex-row md:justify-between items-start md:items-center"
+      class="flex flex-col lg:flex-row h-20 justify-center mt-4 text-center md:justify-between md:mt-0"
     >
-      <ul class="flex flex-wrap mb-5 md:mb-0 gap-[30px] list-none font-medium">
-        {
-          links.map((link) => {
-            return (
-              <li>
-                <a href={link.href}>{link.name}</a>
-              </li>
-            );
-          })
-        }
-      </ul>
-      <ul class="flex gap-5">
-        {
-          logos.map((logo) => {
-            return (
-              <li>
-                <a href="/">
-                  <Image src={logo.src} alt={logo.name} class="w-6" />
-                </a>
-              </li>
-            );
-          })
-        }
-      </ul>
-    </div>
-    <div class="h-[1px] bg-white"></div>
-    <div
-      class="flex flex-col h-20 justify-between items-start mt-4 md:flex-row md:items-center md:mt-0"
-    >
-      <span>@2024 Company name</span>&nbsp
+      <span>@2024 Positivus</span>&nbsp
       <span>
         <a href="/">Terms of use</a> & <a href="/">Privacy policy</a>
       </span>
