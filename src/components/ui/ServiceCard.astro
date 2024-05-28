@@ -1,7 +1,36 @@
 ---
+import { Image } from "astro:assets";
 import Card from "./Card.astro";
+
+import gob from "../../assets/icon6.svg";
+import wob from "../../assets/icon7.svg";
+
+/* 
+1. White card with green title and green on black icon 
+2. Green card with white title and green on black icon
+3. Black card with white title and white on black icon
+*/
+
+const { index, title, img, alt, link } = Astro.props;
 ---
 
-<Card>
-  <div></div>
+<Card isUnderline={true}>
+  <div
+    class=`w-full h-full flex p-[50px] rounded-[45px] justify-between ${index === 1 ? 'bg-white' : index === 2 ? 'bg-green' : 'bg-dark text-white'}`
+  >
+    <div class="w-1/2 flex flex-col justify-between">
+      <h3
+        class=`w-3/4 ${index === 1 ? 'greenhead' : index === 2 ? 'whitehead' : 'blackhead'}`
+      >
+        {title}
+      </h3>
+      <a href={link} class="flex items-center gap-3.5"
+        ><Image src={index === 1 || index === 2 ? gob : wob} alt={alt} />
+        <span>Learn More</span></a
+      >
+    </div>
+    <picture class="w-1/2 flex justify-center items-center">
+      <Image src={img} alt={alt} class="w-3/4 object-cover" />
+    </picture>
+  </div>
 </Card>

@@ -41,6 +41,8 @@
 
     h1 {
       font-size: 3rem;
+      line-height: 120%;
+      font-weight: 500;
     }
 
     h2 {

@@ -1,0 +1,81 @@
+---
+import ServiceCard from "../ui/ServiceCard.astro";
+import Section from "./Section.astro";
+
+import c1 from "../../assets/pics/card-pic1.png";
+import c2 from "../../assets/pics/card-pic2.png";
+import c3 from "../../assets/pics/card-pic3.png";
+import c4 from "../../assets/pics/card-pic4.png";
+import c5 from "../../assets/pics/card-pic5.png";
+import c6 from "../../assets/pics/card-pic6.png";
+
+const cards = [
+  {
+    index: 1,
+    title: "Search Engine Optimization",
+    img: c1,
+    alt: "SEO",
+    link: "https://google.com",
+  },
+  {
+    index: 2,
+    title: "Pay-per-click advertising",
+    img: c2,
+    alt: "SEO",
+    link: "https://google.com",
+  },
+  {
+    index: 3,
+    title: "Social Media Marketing",
+    img: c3,
+    alt: "SEO",
+    link: "https://google.com",
+  },
+  {
+    index: 1,
+    title: "Email Marketing",
+    img: c4,
+    alt: "SEO",
+    link: "https://google.com",
+  },
+  {
+    index: 2,
+    title: "Content Creation",
+    img: c5,
+    alt: "SEO",
+    link: "https://google.com",
+  },
+  {
+    index: 3,
+    title: "Analytics and Tracking",
+    img: c6,
+    alt: "SEO",
+    link: "https://google.com",
+  },
+];
+---
+
+<Section>
+  <div class="mt-[140px]">
+    <div>
+      <h2>Services</h2>
+      <p>
+        At our digital marketing agency, we offer a range of services to help
+        businesses grow and succeed online. These services include:
+      </p>
+    </div>
+    <div class="grid grid-cols-2 grid-rows-3 gap-10">
+      {
+        cards.map((card) => (
+          <ServiceCard
+            index={card.index}
+            title={card.title}
+            img={card.img}
+            alt={card.alt}
+            link={card.link}
+          />
+        ))
+      }
+    </div>
+  </div>
+</Section>

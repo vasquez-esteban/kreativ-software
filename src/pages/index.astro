@@ -1,5 +1,8 @@
 ---
+import Hero from "../components/sections/Hero.astro";
 import Section from "../components/sections/Section.astro";
+import Services from "../components/sections/Services.astro";
+import Sponsors from "../components/sections/Sponsors.astro";
 import Accordion from "../components/ui/Accordion.astro";
 import SwiperSlider from "../components/ui/SwiperSlider.astro";
 import MainLayout from "../layouts/MainLayout.astro";
@@ -10,7 +13,9 @@ import "../styles/globals.css";
   title="Kreatif Software"
   description="Kreatif ofrece servicios de diseño y desarrollo de software"
 >
-  <section id="home" class="bg-green h-[1500px]"></section>
+  <Hero />
+  <Sponsors />
+  <Services />
   <Section id="about">
     <Accordion />
     <button class="btn-tertiary"> Primary Button </button>
