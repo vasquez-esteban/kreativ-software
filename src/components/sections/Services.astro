@@ -1,4 +1,5 @@
 ---
+import SectionTitle from "../ui/SectionTitle.astro";
 import ServiceCard from "../ui/ServiceCard.astro";
 import Section from "./Section.astro";
 
@@ -12,64 +13,68 @@ import c6 from "../../assets/pics/card-pic6.png";
 const cards = [
   {
     index: 1,
-    title: "Search Engine Optimization",
+    titleTop: "Search Engine",
+    titleBottom: "Optimization",
     img: c1,
     alt: "SEO",
     link: "https://google.com",
   },
   {
     index: 2,
-    title: "Pay-per-click advertising",
+    titleTop: "Pay-per-click",
+    titleBottom: "advertising",
     img: c2,
     alt: "SEO",
     link: "https://google.com",
   },
   {
     index: 3,
-    title: "Social Media Marketing",
+    titleTop: "Social Media",
+    titleBottom: "Marketing",
     img: c3,
     alt: "SEO",
     link: "https://google.com",
   },
   {
     index: 1,
-    title: "Email Marketing",
+    titleTop: "Email",
+    titleBottom: "Marketing",
     img: c4,
     alt: "SEO",
     link: "https://google.com",
   },
   {
     index: 2,
-    title: "Content Creation",
+    titleTop: "Content",
+    titleBottom: "Creation",
     img: c5,
     alt: "SEO",
     link: "https://google.com",
   },
   {
     index: 3,
-    title: "Analytics and Tracking",
+    titleTop: "Analytics and",
+    titleBottom: "Tracking",
     img: c6,
     alt: "SEO",
     link: "https://google.com",
   },
 ];
+
+const description =
+  "At our digital marketing agency, we offer a range of services to help businesses grow and succeed online. These services include";
 ---
 
 <Section>
   <div class="mt-[140px]">
-    <div>
-      <h2>Services</h2>
-      <p>
-        At our digital marketing agency, we offer a range of services to help
-        businesses grow and succeed online. These services include:
-      </p>
-    </div>
-    <div class="grid grid-cols-2 grid-rows-3 gap-10">
+    <SectionTitle sectionTitle="Services" description={description} />
+    <div class="grid lg:grid-cols-2 lg:grid-rows-3 gap-10">
       {
         cards.map((card) => (
           <ServiceCard
             index={card.index}
-            title={card.title}
+            titleTop={card.titleTop}
+            titleBottom={card.titleBottom}
             img={card.img}
             alt={card.alt}
             link={card.link}

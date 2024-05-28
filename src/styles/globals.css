@@ -47,14 +47,17 @@
 
     h2 {
       font-size: 2rem;
+      font-weight: 500;
     }
 
     h3 {
       font-size: 1.5rem;
+      font-weight: 500;
     }
 
     h4 {
       font-size: 1rem;
+      font-weight: 500;
     }
 
     @media (max-width: 640px) {
@@ -98,15 +101,15 @@
     }
 
     .greenhead {
-      @apply bg-green text-white;
+      @apply bg-green text-black rounded-[7px] px-[7px];
     }
 
     .whitehead {
-      @apply bg-white text-black;
+      @apply bg-white text-black rounded-[7px] px-[7px];
     }
 
     .blackhead {
-      @apply bg-black text-white;
+      @apply bg-black text-white rounded-[7px] px-[7px];
     }
   }
 }
