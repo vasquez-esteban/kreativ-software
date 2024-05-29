@@ -35,11 +35,10 @@ const { index, title, description } = Astro.props;
   <div
     id={`${title} accordion__item menu content`}
     aria-labelledby={`${title} accordion__item menu button `}
-    class="accordion__content"
+    class="accordion__content px-[60px]"
   >
-    <p
-      class="prose mb-4 mt-1 max-w-full px-[60px] pb-[60px] transition-[height]"
-    >
+    <div class="w-full h-[2px] bg-black"></div>
+    <p class="prose mb-4 mt-1 max-w-full pt-5 pb-[60px] transition-[height]">
       {description}
     </p>
   </div>

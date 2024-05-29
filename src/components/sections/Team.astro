@@ -1,0 +1,93 @@
+---
+import SectionTitle from "../ui/SectionTitle.astro";
+import TeamCard from "../ui/TeamCard.astro";
+import Section from "./Section.astro";
+
+const description =
+  "Meet the skilled and experienced team behind our successful digital marketing strategies";
+
+import {
+  default as p1,
+  default as p2,
+  default as p3,
+  default as p4,
+  default as p5,
+  default as p6,
+} from "../../assets/pics/profile-pic.png";
+
+const team = [
+  {
+    pic: p1,
+    name: "John Smith",
+    role: "CEO",
+    description:
+      "3+ years of experience in paid search advertising. Skilled in campaign management and performance analysis",
+    link: "https://linkedin.com",
+  },
+  {
+    pic: p2,
+    name: "John Smith",
+    role: "CEO",
+    description:
+      "3+ years of experience in paid search advertising. Skilled in campaign management and performance analysis",
+    link: "https://linkedin.com",
+  },
+  {
+    pic: p3,
+    name: "John Smith",
+    role: "CEO",
+    description:
+      "3+ years of experience in paid search advertising. Skilled in campaign management and performance analysis",
+    link: "https://linkedin.com",
+  },
+  {
+    pic: p4,
+    name: "John Smith",
+    role: "CEO",
+    description:
+      "3+ years of experience in paid search advertising. Skilled in campaign management and performance analysis",
+    link: "https://linkedin.com",
+  },
+  {
+    pic: p5,
+    name: "John Smith",
+    role: "CEO",
+    description:
+      "3+ years of experience in paid search advertising. Skilled in campaign management and performance analysis",
+    link: "https://linkedin.com",
+  },
+  {
+    pic: p6,
+    name: "John Smith",
+    role: "CEO",
+    description:
+      "3+ years of experience in paid search advertising. Skilled in campaign management and performance analys",
+    link: "https://linkedin.com",
+  },
+];
+---
+
+<Section>
+  <div class="mt-[140px]">
+    <SectionTitle sectionTitle="Team" description={description} />
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 grid-rows-2 gap-10"
+    >
+      {
+        team.map((member, index) => (
+          <TeamCard
+            key={index}
+            pic={member.pic}
+            name={member.name}
+            role={member.role}
+            description={member.description}
+            link={member.link}
+          />
+        ))
+      }
+    </div>
+    <div class="flex justify-end mt-10">
+      <button class="btn-primary">See all team</button>
+    </div>
+  </div>
+</Section>

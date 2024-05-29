@@ -1,12 +1,13 @@
 ---
 import Cases from "../components/sections/Cases.astro";
+import Contact from "../components/sections/Contact.astro";
 import Hero from "../components/sections/Hero.astro";
 import Process from "../components/sections/Process.astro";
 import Proposal from "../components/sections/Proposal.astro";
-import Section from "../components/sections/Section.astro";
 import Services from "../components/sections/Services.astro";
 import Sponsors from "../components/sections/Sponsors.astro";
-import SwiperSlider from "../components/ui/SwiperSlider.astro";
+import Team from "../components/sections/Team.astro";
+import Testimonials from "../components/sections/Testimonials.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 import "../styles/globals.css";
 ---
@@ -21,7 +22,7 @@ import "../styles/globals.css";
   <Proposal />
   <Cases />
   <Process />
-  <Section id="about">
-    <SwiperSlider />
-  </Section>
+  <Team />
+  <Testimonials />
+  <Contact />
 </MainLayout>

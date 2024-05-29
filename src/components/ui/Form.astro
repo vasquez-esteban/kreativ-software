@@ -1,11 +1,32 @@
 ---
+import { Image } from "astro:assets";
 
+import decorForm from "../../assets/pics/contact-pic.png";
 ---
 
-<section class="flex justify-center items-center h-screen bg-gray-200">
+<div
+  class="flex relative justify-start items-center p-[60px] bg-[#F3F3F3] rounded-[45px]"
+>
   <form class="bg-white p-6 rounded shadow-md h-full w-full max-w-md">
     <div class="mb-4">
-      <label for="name" class="block text-gray-700 mb-2">Name:</label>
+      <label for="checkbox" class="block text-gray-700 mb-2">Checkbox</label>
+      <input
+        type="checkbox"
+        id="checkbox"
+        name="checkbox"
+        class="text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <label for="checkbox2" class="block text-gray-700 mb-2">Checkbox</label>
+      <input
+        type="checkbox"
+        id="checkbox2"
+        name="checkbox2"
+        class="text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
+
+    <div class="mb-4">
+      <label for="name" class="block text-gray-700 mb-2">Name</label>
       <input
         type="text"
         id="name"
@@ -16,7 +37,7 @@
     </div>
 
     <div class="mb-4">
-      <label for="email" class="block text-gray-700 mb-2">Email:</label>
+      <label for="email" class="block text-gray-700 mb-2">Email*</label>
       <input
         type="text"
         id="email"
@@ -25,20 +46,8 @@
         class="w-full px-3 py-2 border rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
     </div>
-
     <div class="mb-4">
-      <label for="subject" class="block text-gray-700 mb-2">Subject:</label>
-      <input
-        type="text"
-        id="subject"
-        name="subject"
-        placeholder="Subject"
-        class="w-full px-3 py-2 border rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
-    </div>
-
-    <div class="mb-4">
-      <label for="message" class="block text-gray-700 mb-2">Message:</label>
+      <label for="message" class="block text-gray-700 mb-2">Message*</label>
       <textarea
         id="message"
         name="message"
@@ -54,4 +63,8 @@
       >Send</button
     >
   </form>
-</section>
+
+  <picture class="absolute right-0 top-[5%] bottom-[5%]">
+    <Image src={decorForm} alt="decor" />
+  </picture>
+</div>
