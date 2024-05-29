@@ -1,70 +1,67 @@
 ---
 import { Image } from "astro:assets";
-
 import decorForm from "../../assets/pics/contact-pic.png";
 ---
 
 <div
-  class="flex relative justify-start items-center p-[60px] bg-[#F3F3F3] rounded-[45px]"
+  class="flex relative justify-start items-center p-[60px] bg-[#F3F3F3] rounded-[45px] overflow-hidden"
 >
-  <form class="bg-white p-6 rounded shadow-md h-full w-full max-w-md">
-    <div class="mb-4">
-      <label for="checkbox" class="block text-gray-700 mb-2">Checkbox</label>
-      <input
-        type="checkbox"
-        id="checkbox"
-        name="checkbox"
-        class="text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
-      <label for="checkbox2" class="block text-gray-700 mb-2">Checkbox</label>
-      <input
-        type="checkbox"
-        id="checkbox2"
-        name="checkbox2"
-        class="text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
+  <form class="bg-white sm:p-6 h-full w-full lg:max-w-lg">
+    <div class="flex flex-col sm:flex-row mb-4 gap-4">
+      <div class="flex items-center gap-10">
+        <label for="checkbox1" class="block text-black mb-2">Checkbox 1</label>
+        <input
+          type="checkbox"
+          id="checkbox1"
+          name="checkbox1"
+          class="form-checkbox text-black"
+        />
+      </div>
+      <div class="flex items-center gap-10">
+        <label for="checkbox2" class="block text-black mb-2">Checkbox 2</label>
+        <input
+          type="checkbox"
+          id="checkbox2"
+          name="checkbox2"
+          class="form-checkbox text-black"
+        />
+      </div>
     </div>
-
     <div class="mb-4">
-      <label for="name" class="block text-gray-700 mb-2">Name</label>
+      <label for="name" class="block text-black mb-2">Name*</label>
       <input
         type="text"
         id="name"
         name="name"
         placeholder="Name"
-        class="w-full px-3 py-2 border rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        class="w-full px-[30px] py-[18px] border border-black rounded-md text-black outline-none"
       />
     </div>
 
     <div class="mb-4">
-      <label for="email" class="block text-gray-700 mb-2">Email*</label>
+      <label for="email" class="block text-black mb-2">Email*</label>
       <input
-        type="text"
+        type="email"
         id="email"
         name="email"
         placeholder="Email"
-        class="w-full px-3 py-2 border rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        class="w-full px-[30px] py-[18px] border border-black rounded-md text-black outline-none"
       />
     </div>
+
     <div class="mb-4">
-      <label for="message" class="block text-gray-700 mb-2">Message*</label>
+      <label for="message" class="block text-black mb-2">Message*</label>
       <textarea
         id="message"
         name="message"
         placeholder="Message"
-        class="w-full px-3 py-2 border rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        class="w-full px-[30px] py-[18px] border border-black rounded-md text-black outline-none"
       ></textarea>
     </div>
 
-    <button
-      type="submit"
-      name="submit"
-      class="w-full py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-      >Send</button
-    >
+    <button type="submit" name="submit" class="btn-primary w-full">Send</button>
   </form>
-
-  <picture class="absolute right-0 top-[5%] bottom-[5%]">
+  <picture class="absolute right-[-25%] top-[2%] bottom-[2%] hidden lg:block">
     <Image src={decorForm} alt="decor" />
   </picture>
 </div>
