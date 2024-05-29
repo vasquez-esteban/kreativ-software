@@ -24,7 +24,7 @@ const sponsors = [
       sponsors.map((sponsor) => {
         return (
           <div>
-            <Image src={sponsor.logo} alt={sponsor.alt} />
+            <Image src={sponsor.logo} alt={sponsor.alt} loading="eager" />
           </div>
         );
       })

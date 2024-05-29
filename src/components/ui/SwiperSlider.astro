@@ -1,14 +1,28 @@
 ---
 const slides = [
-  { index: 1, name: "John Smith", description: "Marketing dierector at XYZ" },
-  { index: 2, name: "John Smith", description: "Marketing dierector at XYZ" },
-  { index: 3, name: "John Smith", description: "Marketing dierector at XYZ" },
-  { index: 4, name: "John Smith", description: "Marketing dierector at XYZ" },
-  { index: 5, name: "John Smith", description: "Marketing dierector at XYZ" },
+  { index: 1, name: "John Johnson", description: "Marketing dierector at XYZ" },
+  { index: 2, name: "Ana Banana", description: "Marketing dierector at XYZ" },
+  {
+    index: 3,
+    name: "Camilo Corintio",
+    description: "Marketing dierector at XYZ",
+  },
+  { index: 4, name: "Karla Kaz", description: "Marketing dierector at XYZ" },
+  { index: 5, name: "Johanna Jana", description: "Marketing dierector at XYZ" },
 ];
 ---
 
-<div id="ProjectSlider" class="swiper mt-10">
+<div
+  id="ProjectSlider"
+  class="swiper mt-10"
+  style={{
+    "--swiper-pagination-color": "var(--green)",
+    "--swiper-pagination-bullet-inactive-color": "#fff",
+    "--swiper-pagination-bullet-inactive-opacity": "1",
+    "--swiper-pagination-bullet-size": "19px",
+    "--swiper-pagination-bullet-horizontal-gap": "10px",
+  }}
+>
   <div class="swiper-wrapper mt-[84px] mb-[124px]" data-cursor="swipe">
     {
       slides.map((slide) => (
@@ -17,7 +31,7 @@ const slides = [
           role="group"
           aria-label={`${slide.index} / ${slides.length}`}
         >
-          <div class="flex flex-col justify-center items-center py-[48px] px-[52px]">
+          <div class="flex flex-col justify-center items-center py-[48px] px-6 sm:px-[52px]">
             <p class="bubble">
               "We have been working with Positivus for the past year and have
               seen a significant increase in website traffic and leads as a
@@ -26,7 +40,7 @@ const slides = [
               Positivus to any company looking to grow their online presence."
             </p>
           </div>
-          <div class="w-full px-20 ">
+          <div class="w-full px-10 sm:px-20 ">
             <div class="text-green font-medium">{slide.name}</div>
             <div>{slide.description}</div>
           </div>
@@ -34,8 +48,8 @@ const slides = [
       ))
     }
   </div>
-  <div class="flex justify-center mb-[68px] gap-[189px]">
-    <div class="swiper-button-prev w-10 h-10">
+  <div class="flex justify-around lg:justify-center mb-[68px] lg:gap-[189px]">
+    <div class="swiper-button-prev w-7 h-7 sm:w-10 sm:h-10">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
         ><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
         <path
@@ -44,8 +58,8 @@ const slides = [
         ></path></svg
       >
     </div>
-    <div class="swiper-pagination h-10 w-20 bg-white">Hi</div>
-    <div class="swiper-button-next w-10 h-10 rotate-180">
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next w-7 h-7 sm:w-10 sm:h-10 rotate-180">
       <svg xmlns="http://www.w3.org/2000/svg " viewBox="0 0 448 512"
         ><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
         <path
@@ -58,13 +72,19 @@ const slides = [
 </div>
 <script>
   import "swiper/css";
+  import "swiper/css/pagination";
   import Swiper from "swiper";
+  import { Pagination, Navigation } from "swiper/modules";
   import { register } from "swiper/element/bundle";
   register();
 
+  Swiper.use([Pagination, Navigation]);
+
   new Swiper("#ProjectSlider", {
+    modules: [Pagination, Navigation],
     pagination: {
       el: ".swiper-pagination",
+      clickable: true,
     },
     navigation: {
       nextEl: ".swiper-button-next",
@@ -88,26 +108,14 @@ const slides = [
   });
 </script>
 <style>
-  .swiper-wrapper {
-    position: relative;
-  }
-  .swiper-slide {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 500ms ease-in-out;
-  }
-  .swiper-slide-active {
-  }
   .bubble {
     position: relative;
-    padding: 45px;
+    padding: 8%;
     background-color: var(--dark);
     color: var(--white);
     border-radius: 45px;
     border: 1px solid var(--green);
   }
-
   .bubble:after {
     content: "";
     position: absolute;
@@ -117,7 +125,6 @@ const slides = [
     border-style: solid;
     border-color: var(--dark) transparent transparent var(--dark);
   }
-
   .bubble:before {
     content: "";
     position: absolute;
@@ -126,5 +133,20 @@ const slides = [
     border-width: 20px; /* Adjust this to match the border-width of .bubble:after */
     border-style: solid;
     border-color: var(--green) transparent transparent var(--green);
+  }
+  .swiper-wrapper {
+    position: relative;
+  }
+  .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 500ms ease-in-out;
+  }
+  .swiper-pagination {
+    display: flex;
+    align-items: center;
+    width: auto !important;
+    position: static !important;
   }
 </style>
