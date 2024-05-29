@@ -1,45 +1,76 @@
 ---
 type Props = {
+  index: number;
   title: string;
   description: string;
 };
 
-const { title, description } = Astro.props;
+const { index, title, description } = Astro.props;
 ---
 
 <div
-  class="accordion__item group h-[60px] bg-slate-200 overflow-hidden w-full transition-all duration-500"
+  id="accordion__item"
+  class="accordion__item group h-[160px] bg-[#F3F3F3] overflow-hidden w-full transition-all duration-500 mb-[30px] rounded-[45px] border border-dark shadow-[0px_5px_0px_#191a23]"
 >
   <button
-    class="accordion__toggle w-full h-[60px] flex items-center justify-between cursor-pointer"
+    class="accordion__toggle w-full h-[160px] flex items-center justify-between p-[60px] cursor-pointer"
     id={`${title} accordion__item menu button`}
     aria-expanded="false"
     aria-controls={`${title} accordion__item menu content`}
   >
-    {title}
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="accordion__icon h-3 w-3 transition-transform duration-300"
-      aria-hidden="true"
-      width="24"
-      height="24"
-      viewBox="0 0 512 512"
-      ><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-      <path
-        d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
-      ></path></svg
+    <div class="flex items-center gap-[25px]">
+      <span class="hidden sm:block sm:text-6xl">0{index}</span>
+      {title}
+    </div>
+    <div
+      class="bg-white w-[58px] h-[58px] flex justify-center items-center rounded-full border border-dark"
     >
+      <div
+        class="accordion__icon h-10 w-10 transition-transform duration-300 flex justify-center items-center relative"
+        aria-hidden="true"
+      >
+      </div>
+    </div>
   </button>
   <div
     id={`${title} accordion__item menu content`}
-    aria-labelledby={`${title} accordion__item menu button`}
+    aria-labelledby={`${title} accordion__item menu button `}
     class="accordion__content"
   >
-    <p class="prose mb-4 mt-1 max-w-full transition-[height]">
+    <p
+      class="prose mb-4 mt-1 max-w-full px-[60px] pb-[60px] transition-[height]"
+    >
       {description}
     </p>
   </div>
 </div>
+<style>
+  .accordion__icon::before,
+  .accordion__icon::after {
+    content: "";
+    position: absolute;
+    background-color: black;
+    transition: opacity 0.3s ease;
+  }
+
+  .accordion__icon::before {
+    width: 100%;
+    height: 6px; /* Increased from 2px to 6px */
+    left: 0;
+    top: calc(50% - 3px); /* Adjusted to center the thicker line */
+  }
+
+  .accordion__icon::after {
+    width: 6px; /* Increased from 2px to 6px */
+    height: 100%;
+    left: calc(50% - 3px); /* Adjusted to center the thicker line */
+    top: 0;
+  }
+
+  .accordion__icon.collapsed::after {
+    opacity: 0;
+  }
+</style>
 <script>
   function accordionSetup() {
     const accordionItems = document.querySelectorAll(
@@ -67,9 +98,11 @@ const { title, description } = Astro.props;
 
               if (otherAccordionToggle && otherAccordionIcon) {
                 otherAccordionItem.classList.remove("active");
+                otherAccordionItem.classList.remove("bg-green");
                 otherAccordionToggle.setAttribute("aria-expanded", "false");
-                otherAccordionItem.style.height = "60px";
+                otherAccordionItem.style.height = "160px";
                 otherAccordionIcon.classList.remove("rotate-180");
+                otherAccordionIcon.classList.remove("collapsed");
               }
             }
           });
@@ -81,15 +114,19 @@ const { title, description } = Astro.props;
 
             // Set height according to content
             accordionItem.style.height = accordionItem.scrollHeight + "px";
+            accordionItem.classList.add("bg-green");
             accordionIcon.classList.add("rotate-180");
+            accordionIcon.classList.add("collapsed");
           } else {
             accordionItem.classList.remove("active");
             accordionToggle.setAttribute("aria-expanded", "false");
 
             // Reset height. Accordion Items have Overflow hidden so when it's
             // height is 60, because the toggle's height is 60, the content is hidden
-            accordionItem.style.height = "60px";
+            accordionItem.style.height = "160px";
             accordionIcon.classList.remove("rotate-180");
+            accordionItem.classList.remove("bg-green");
+            accordionIcon.classList.remove("collapsed");
           }
 
           e.preventDefault();
@@ -111,11 +148,13 @@ const { title, description } = Astro.props;
           !accordionItem.contains(event.target as Node)
         ) {
           accordionItem.classList.remove("active");
+          accordionItem.classList.remove("bg-green");
           accordionToggle.setAttribute("aria-expanded", "false");
 
           // Reset height. Overflow gets hidden
-          accordionItem.style.height = "60px";
+          accordionItem.style.height = "160px";
           accordionIcon.classList.remove("rotate-180");
+          accordionIcon.classList.remove("collapsed");
         }
       });
     });

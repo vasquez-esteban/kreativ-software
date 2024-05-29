@@ -3,22 +3,52 @@ import AccordionItem from "./AccordionItem.astro";
 
 const content = [
   {
-    title: "First item",
-    description: "This is the first item",
+    index: 1,
+    title: "First Item",
+    description:
+      "lorem ipsum dolor sit amet consectetur adipisicing elit.During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements. ",
   },
   {
-    title: "Second item",
-    description: "This is the second item",
+    index: 2,
+    title: "Second Item",
+    description:
+      "lorem ipsum dolor sit amet consectetur adipisicing elit.During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements. ",
   },
   {
-    title: "Third item",
-    description: "This is the third item",
+    index: 3,
+    title: "Third Item",
+    description:
+      "lorem ipsum dolor sit amet consectetur adipisicing elit.During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements. ",
+  },
+  {
+    index: 4,
+    title: "Fourth Item",
+    description:
+      "lorem ipsum dolor sit amet consectetur adipisicing elit.During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements. ",
+  },
+  {
+    index: 5,
+    title: "Fifth Item",
+    description:
+      "lorem ipsum dolor sit amet consectetur adipisicing elit.During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements. ",
+  },
+  {
+    index: 6,
+    title: "Sixth Item",
+    description:
+      "lorem ipsum dolor sit amet consectetur adipisicing elit.During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements. ",
   },
 ];
 ---
 
 {
   content.map((item) => {
-    return <AccordionItem title={item.title} description={item.description} />;
+    return (
+      <AccordionItem
+        index={item.index}
+        title={item.title}
+        description={item.description}
+      />
+    );
   })
 }
