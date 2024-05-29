@@ -7,26 +7,29 @@ import decorForm from "../../assets/pics/contact-pic.png";
   class="flex relative justify-start items-center p-[60px] bg-[#F3F3F3] rounded-[45px] overflow-hidden"
 >
   <form class="bg-white sm:p-6 h-full w-full lg:max-w-lg">
-    <div class="flex flex-col sm:flex-row mb-4 gap-4">
-      <div class="flex items-center gap-10">
-        <label for="checkbox1" class="block text-black mb-2">Checkbox 1</label>
+    <div class="flex flex-col sm:flex-row gap-[35px] sm:items-center mb-10">
+      <div class="flex items-center gap-[14px]">
         <input
           type="checkbox"
           id="checkbox1"
           name="checkbox1"
           class="form-checkbox text-black"
         />
+        <label for="checkbox1" class="text-black">Say Hi</label>
       </div>
-      <div class="flex items-center gap-10">
-        <label for="checkbox2" class="block text-black mb-2">Checkbox 2</label>
+      <div class="flex items-center gap-[14px]">
         <input
           type="checkbox"
           id="checkbox2"
           name="checkbox2"
           class="form-checkbox text-black"
         />
+        <label for="checkbox2" class="flex items-center text-black"
+          >Get a Quote</label
+        >
       </div>
     </div>
+
     <div class="mb-4">
       <label for="name" class="block text-black mb-2">Name*</label>
       <input
@@ -34,7 +37,7 @@ import decorForm from "../../assets/pics/contact-pic.png";
         id="name"
         name="name"
         placeholder="Name"
-        class="w-full px-[30px] py-[18px] border border-black rounded-md text-black outline-none"
+        class="w-full px-[30px] py-[18px] border border-black rounded-[14px] text-black outline-none"
       />
     </div>
 
@@ -45,7 +48,7 @@ import decorForm from "../../assets/pics/contact-pic.png";
         id="email"
         name="email"
         placeholder="Email"
-        class="w-full px-[30px] py-[18px] border border-black rounded-md text-black outline-none"
+        class="w-full px-[30px] py-[18px] border border-black rounded-[14px] text-black outline-none"
       />
     </div>
 
@@ -55,7 +58,7 @@ import decorForm from "../../assets/pics/contact-pic.png";
         id="message"
         name="message"
         placeholder="Message"
-        class="w-full px-[30px] py-[18px] border border-black rounded-md text-black outline-none"
+        class="w-full px-[30px] py-[18px] border border-black rounded-[14px] text-black outline-none"
       ></textarea>
     </div>
 
@@ -65,3 +68,68 @@ import decorForm from "../../assets/pics/contact-pic.png";
     <Image src={decorForm} alt="decor" />
   </picture>
 </div>
+<style>
+  .form-checkbox {
+    appearance: none;
+    width: 28px;
+    height: 28px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .form-checkbox:before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--green);
+    transform: scale(0);
+    transition: transform 0.1s ease-in-out;
+  }
+
+  .form-checkbox:checked:before {
+    transform: scale(0.6);
+  }
+</style>
+<script>
+  function formSetup() {
+    var cb1 = document.getElementById("checkbox1") as HTMLInputElement;
+    var cb2 = document.getElementById("checkbox2") as HTMLInputElement;
+    var message = document.getElementById("message") as HTMLInputElement;
+
+    if (cb1 && cb2) {
+      cb1.checked = true;
+
+      cb2.addEventListener("change", function () {
+        if (cb2.checked) {
+          cb1.checked = false;
+          message.value =
+            "We're interested in your services! Please contact us";
+        } else {
+          message.value = "";
+          cb1.checked = true;
+        }
+      });
+      cb1.addEventListener("change", function () {
+        if (cb1.checked) {
+          cb2.checked = false;
+          message.value = "";
+        } else {
+          cb2.checked = true;
+          message.value =
+            "We're interested in your services! Please contact us";
+        }
+      });
+    }
+  }
+
+  formSetup();
+  document.addEventListener("astro:after-swap", formSetup);
+</script>
