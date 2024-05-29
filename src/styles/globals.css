@@ -8,6 +8,7 @@
     src: url("/fonts/grotesk/SpaceGrotesk-Regular.woff"), format("woff");
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
   }
 
   @font-face {
@@ -15,6 +16,7 @@
     src: url("/fonts/grotesk/SpaceGrotesk-Medium.woff"), format("woff");
     font-weight: 500;
     font-style: normal;
+    font-display: swap;
   }
 
   :root {
@@ -89,15 +91,24 @@
 
   @layer components {
     .btn-primary {
-      @apply bg-dark text-white rounded-lg px-[35px] py-5;
+      @apply bg-dark text-white rounded-lg px-[35px] py-5 transition-all duration-200;
+    }
+    .btn-primary:hover {
+      @apply bg-green text-black transform scale-105;
     }
 
     .btn-secondary {
-      @apply bg-transparent text-black px-[35px] py-5 rounded-lg border border-solid border-black;
+      @apply bg-transparent text-black px-[35px] py-5 rounded-lg border border-solid border-black transition-all duration-200;
+    }
+    .btn-secondary:hover {
+      @apply bg-black text-white border-green transform scale-105;
     }
 
     .btn-tertiary {
-      @apply bg-green text-black rounded-lg px-[35px] py-5;
+      @apply bg-green text-black rounded-lg px-[35px] py-5 transition-all duration-200;
+    }
+    .btn-tertiary:hover {
+      @apply bg-white text-black transform scale-105;
     }
 
     .greenhead {
