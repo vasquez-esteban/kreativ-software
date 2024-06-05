@@ -1,0 +1,43 @@
+<div id="ctr" class="min-h-[300vh]">
+  <div class="sticky top-0 bg-dark h-[100vh] overflow-hidden">
+    <div class="body ml-20">
+      <h1 id="title1" class="m-0 text-5xl uppercase leading-none text-white">
+        Parallax
+      </h1>
+      <h1 class="m-0 text-5xl uppercase leading-none text-white">Scroll</h1>
+    </div>
+
+    <div class="images flex w-auto justify-center relative mt-10 bg-green">
+      {
+        Array.from({ length: 3 }).map((_, i) => (
+          <div
+            class={`imageContainer absolute ${i === 0 ? "h-[25vh] w-[25vw] z-50 bg-yellow-500" : ""} ${i === 1 ? "left-[55%] top-20 h-40 w-40 z-20 bg-red-500" : ""} ${i === 2 ? "left-[35%] top-40 h-40 w-40 z-30 bg-blue-500" : ""}`}
+          />
+        ))
+      }
+    </div>
+  </div>
+</div>
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/all";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const container = document.getElementById("ctr");
+  const imgs = gsap.utils.toArray(".imageContainer") as HTMLElement[];
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: container,
+      start: "center center",
+      end: "bottom center",
+      markers: true,
+      scrub: true,
+    },
+  });
+
+  tl.to(imgs[0], { scale: 6 }, 0)
+    .to(imgs[1], { scale: 3, y: 300 }, 0)
+    .to(imgs[2], { scale: 4, y: 300 }, 0);
+</script>

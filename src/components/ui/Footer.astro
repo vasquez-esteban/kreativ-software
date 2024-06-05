@@ -11,103 +11,82 @@ const logos = [
   { name: "Linkedin", src: Linkedin, link: "https://linkedin.com" },
   { name: "Twitter", src: Twitter, link: "https://twitter.com" },
 ];
-
-const links = [
-  { name: "About us", href: "#about" },
-  { name: "Services", href: "#services" },
-  { name: "Use Cases", href: "#cases" },
-  { name: "Pricing", href: "#Testimonials" },
-  { name: "Blog", href: "#Home" },
-];
 ---
 
-<section class="sm:px-5">
-  <div class="w-full max-w-[1240px] mx-auto">
-    <div
-      class="px-[15px] bg-dark text-white py-[55px] lg:px-[60px] sm:rounded-t-[45px]"
-    >
-      <div>
+<div
+  class="xl:relative xl:h-[496px]"
+  style={{ clipPath: ` polygon(0 0, 100% 0, 100% 100%, 0 100%) ` }}
+>
+  <div class="xl:fixed xl:w-full xl:h-[496px] xl:bottom-0">
+    <section class="sm:px-5">
+      <div class="w-full max-w-[1240px] mx-auto">
         <div
-          class="flex flex-col lg:flex-row gap-7 items-center justify-between"
+          class="px-[15px] bg-dark text-white py-[54px] lg:px-[60px] sm:rounded-t-[45px]"
         >
-          <picture>
-            <a href="#home">
-              <Image src={Logo} alt="Logo for Kreatif Brand" />
-            </a>
-          </picture>
-          <ul class="flex flex-col sm:flex-row gap-5">
-            {
-              links.map((link) => {
-                return (
-                  <li class="text-center">
-                    <a class="underline" href={link.href}>
-                      {link.name}
-                    </a>
-                  </li>
-                );
-              })
-            }
-          </ul>
-          <ul class="flex gap-5">
-            {
-              logos.map((logo) => {
-                return (
-                  <li>
-                    <a href={logo.link} target="_blank">
-                      <picture>
-                        <Image src={logo.src} alt={logo.name} />
-                      </picture>
-                    </a>
-                  </li>
-                );
-              })
-            }
-          </ul>
-        </div>
+          <div>
+            <div
+              class="flex flex-col lg:flex-row gap-7 items-center justify-between"
+            >
+              <picture>
+                <a href="#home">
+                  <Image src={Logo} alt="Logo for Kreatif Brand" />
+                </a>
+              </picture>
 
-        <div class="flex flex-col lg:flex-row mt-[66px] mb-[51px]">
-          <div
-            class="flex text-center lg:text-start flex-col w-full lg:w-[30%]"
-          >
-            <h3 class="mb-5">Contact us:</h3>
-            <div class="flex flex-col justify-between gap-4">
-              <span> Email: examplemail.com </span>
-              <span> Phone: +123 456 789 </span>
-              <span class="lg:w-3/4">
-                Address: 1234 Street Name, City Name, Country Name
-              </span>
+              <ul class="flex gap-5">
+                {
+                  logos.map((logo) => {
+                    return (
+                      <li>
+                        <a href={logo.link} target="_blank">
+                          <picture>
+                            <Image src={logo.src} alt={logo.name} />
+                          </picture>
+                        </a>
+                      </li>
+                    );
+                  })
+                }
+              </ul>
+            </div>
+
+            <div class="flex flex-col lg:flex-row mt-[66px] mb-[51px]">
+              <div
+                class="flex text-center lg:text-start flex-col w-full lg:w-[30%]"
+              >
+                <h3 class="mb-5">Contact us:</h3>
+                <div class="flex flex-col justify-between gap-4">
+                  <span> Email: examplemail.com </span>
+                  <span> Phone: +123 456 789 </span>
+                  <span class="lg:w-3/4"> Address: Medellin, Col </span>
+                </div>
+              </div>
+              <div class="flex-grow my-10 lg:my-0 lg:ml-12">
+                <ShortForm />
+              </div>
             </div>
           </div>
-          <div class="flex-grow my-10 lg:my-0 lg:ml-12">
-            <ShortForm />
+
+          <div class="h-[1px] bg-white mb-5"></div>
+          <div
+            class="flex flex-col lg:flex-row justify-center mt-4 text-center md:justify-between md:mt-0"
+          >
+            <span>2024 @Kreatif</span>&nbsp
+            <span>
+              <a
+                href="https://www.olgaskuja.design/"
+                target="_blank"
+                class="underline">Credit (Olga Skuja)</a
+              ><span> &</span>
+              <a
+                class="underline"
+                href="https://creativecommons.org/licenses/by/4.0/"
+                target="_blank">Licence</a
+              >
+            </span>
           </div>
         </div>
       </div>
-
-      <div class="h-[1px] bg-white mb-5"></div>
-      <div
-        class="flex flex-col lg:flex-row h-20 justify-center mt-4 text-center md:justify-between md:mt-0"
-      >
-        <span
-          >2024 Positivus - Made With <a
-            class="underline"
-            target="_blank"
-            href="https://astro.build/">Astro</a
-          ></span
-        >&nbsp
-        <span>
-          <a
-            href="https://www.olgaskuja.design/"
-            target="_blank"
-            class="underline">Credit (Olga Skuja)</a
-          ><span> &</span>
-          <a
-            class="underline"
-            href="https://creativecommons.org/licenses/by/4.0/"
-            target="_blank">Licence</a
-          >
-        </span>
-      </div>
-    </div>
+    </section>
   </div>
-</section>
+</div>

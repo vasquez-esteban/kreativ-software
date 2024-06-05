@@ -1,0 +1,77 @@
+---
+import Parallax from "../components/sections/Parallax.astro";
+import SVGPath from "../components/ui/SVGPath.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+import "../styles/globals.css";
+---
+
+<MainLayout>
+  <section
+    class="bg-slate-950 relative w-full h-screen flex justify-center items-center"
+  >
+    <div class="text-white mr">HOVER</div>
+    <div class="w-80 h-80 bg-white"></div>
+    <div class="w-80 h-80 bg-black"></div>
+    <span
+      class="transition-hover duration-700 out text-white font-bold mix-blend-difference absolute text-8xl flex items-center text-center w-[600px] h-40 top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2"
+    >
+      CREATE GREAT STORIES
+    </span>
+  </section>
+  <section
+    id="sct"
+    class="relative bg-blue-950 w-full min-h-screen flex items-center justify-center flex-col"
+  >
+    <h1
+      id="mover"
+      class="relative text-6xl left-[900px] text-white whitespace-nowrap"
+    >
+      Inspiration & Impact
+    </h1>
+    <img
+      src="https://images.pexels.com/photos/6940245/pexels-photo-6940245.jpeg"
+      alt="Serbia"
+      class="absolute fit-cover w-[500px] h-[600px]"
+    />
+  </section>
+  <Parallax />
+  <SVGPath />
+</MainLayout>
+
+<style>
+  .out:hover {
+    -webkit-text-stroke: 1px white;
+    -webkit-text-fill-color: transparent;
+  }
+
+  #mover::after {
+    content: "Inspiration & Impact";
+    position: absolute;
+    left: 0;
+    -webkit-text-stroke: 1px red;
+    -webkit-text-fill-color: transparent;
+    z-index: 20;
+  }
+</style>
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/all";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  let tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#sct",
+      start: "300 center",
+      end: "bottom center",
+      scrub: true,
+      markers: true,
+    },
+  });
+
+  const scrollText = document.getElementById("mover") as HTMLElement;
+
+  tl.to(scrollText, {
+    left: "0px",
+  });
+</script>

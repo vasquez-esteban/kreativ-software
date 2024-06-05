@@ -101,14 +101,14 @@
       @apply bg-transparent text-black px-[35px] py-5 rounded-lg border border-solid border-black transition-all duration-200;
     }
     .btn-secondary:hover {
-      @apply bg-black text-white border-green transform scale-105;
+      @apply bg-black text-white transform;
     }
 
     .btn-tertiary {
       @apply bg-green text-black rounded-lg px-[35px] py-5 transition-all duration-200;
     }
     .btn-tertiary:hover {
-      @apply bg-white text-black transform scale-105;
+      @apply transform scale-105;
     }
 
     .greenhead {

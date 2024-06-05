@@ -3,24 +3,20 @@ import { Image } from "astro:assets";
 
 const navLinks = [
   {
-    name: "About us",
-    href: "#about",
-  },
-  {
     name: "Services",
     href: "#services",
   },
   {
-    name: "Use cases",
-    href: "#cases",
+    name: "Process",
+    href: "#process",
+  },
+  {
+    name: "Our team",
+    href: "#team",
   },
   {
     name: "Testimonials",
     href: "#testimonials",
-  },
-  {
-    name: "Contact",
-    href: "#contact",
   },
 ];
 
@@ -50,12 +46,16 @@ import brand from "../../assets/brand.svg";
       class="bg-[#fff] w-full absolute top-full z-10 xl:static xl:flex xl:flex-grow xl:items-center xl:justify-center overflow-hidden transition-height duration-500 h-0 xl:h-auto"
     >
       <!-- Nav Links -->
-      <ul class="xl:flex xl:flex-grow xl:justify-center xl:gap-10">
+      <ul id="nl" class="xl:flex xl:flex-grow xl:justify-center xl:gap-10">
         {
           navLinks.map((link) => {
             return (
               <li class="mx-4 p-4 xl:mx-0 px-0">
-                <a id={link.name} href={link.href} class="block">
+                <a
+                  id={link.name}
+                  href={link.href}
+                  class="block hover:font-medium"
+                >
                   {link.name}
                 </a>
               </li>
@@ -66,7 +66,12 @@ import brand from "../../assets/brand.svg";
 
       <!-- Login -->
       <div class="flex xl:flex-row xl:items-center px-4 xl:gap-4 flex-col">
-        <button class="btn-secondary">Request a quote</button>
+        <div>
+          <a
+            class="my inline-block btn-secondary cursor-pointer"
+            href="#contact">Request a quote</a
+          >
+        </div>
       </div>
     </div>
 
@@ -125,6 +130,26 @@ import brand from "../../assets/brand.svg";
         }
       });
     }
+
+    const sections = document.querySelectorAll("section");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const id = entry.target.getAttribute("id");
+          const activeLink = document.querySelector(`#nl a[href="#${id}"]`);
+
+          if (entry.isIntersecting) {
+            activeLink?.classList.add("underline");
+          } else {
+            activeLink?.classList.remove("underline");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
   });
 </script>
 

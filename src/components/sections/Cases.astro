@@ -28,7 +28,7 @@ import larrow from "../../assets/icon3.svg";
 import SectionTitle from "../ui/SectionTitle.astro";
 ---
 
-<Section id="cases">
+<Section>
   <SectionTitle
     sectionTitle="Case Studies"
     description="Explore Real-Life Examples of Our Proven Digital Marketing Success through Our Case Studies"
@@ -40,7 +40,11 @@ import SectionTitle from "../ui/SectionTitle.astro";
           <div class="flex p-[60px] h-full bg-dark text-white rounded-[45px] m-[1px]">
             <div class="flex flex-col gap-5">
               <p>{card.title}</p>
-              <a href={card.link} class="flex items-center gap-[15px]">
+              <a
+                href={card.link}
+                target="_blank"
+                class="flex items-center gap-[15px]"
+              >
                 <span class="text-green">Case Info</span>
                 <picture>
                   <Image src={larrow} alt="Arrow pointing up right" />
