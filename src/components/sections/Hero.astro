@@ -51,7 +51,7 @@ import Section from "./Section.astro";
   const mask = document.getElementById("mask");
 
   const positionCursor = (e: MouseEvent) => {
-    const rect = mask?.getBoundingClientRect();
+    const rect = mask?.getBoundingClientRect() as DOMRect;
     const x = e.clientX - rect.left - 150;
     const y = e.clientY - rect.top - 150;
 
