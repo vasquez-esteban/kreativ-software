@@ -1,0 +1,48 @@
+<section>
+  <div id="contour">
+    <svg class="w-full mb-40" viewBox="0 0 1383 165">
+      <path
+        fill="none"
+        id="curve"
+        d="M1 107.5C360.5 -239.499 1302 401 1382.5 61.5001"></path>
+
+      <text class="text-[6xl] uppercase" style={{ fill: "black" }}>
+        {
+          [...Array(3)].map((_, i) => {
+            return (
+              <textPath class="text" startOffset={i + "%"} href="#curve">
+                TELL CREATE BRAND IMPROVE INSPIRE START WOW
+              </textPath>
+            );
+          })
+        }
+      </text>
+    </svg>
+  </div>
+</section>
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/all";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const paths = gsap.utils.toArray(".text") as HTMLElement[];
+
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: "#contour",
+      start: "top center",
+      end: "bottom center",
+      scrub: true,
+      markers: true,
+      onUpdate: (self) => {
+        paths.forEach((path, i) => {
+          path.setAttribute(
+            "startOffset",
+            -40 + i * 40 + self.progress * 40 + "%"
+          );
+        });
+      },
+    },
+  });
+</script>
