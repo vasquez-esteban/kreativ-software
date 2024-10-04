@@ -34,7 +34,7 @@ Kreatif is a high-performance Landing page made with Astro and Tailwind. It's ba
 │   └── pages/
 │       └── index.astro
 └── package.json
-``
+```
 
 ## 🧞 Commands
 
