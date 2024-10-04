@@ -1,25 +1,20 @@
 # ✨ Kreatif Software
-
 **[Landing](https://kreatif-software.netlify.app/)**
-
-Kreatif es una Landing page de alto desempeño hecha con Astro y Tailwind. Está basada en el diseño original de Figma hecho por [Olga Skuja](https://www.olgaskuja.design/).
+Kreatif is a high-performance Landing page made with Astro and Tailwind. It's based on the original Figma design by [Olga Skuja](https://www.olgaskuja.design/).
 
 ## Features
+- Clean and simple design.
+- Fully Responsive.
+- Fast and efficient thanks to Astro.
+- Customizable with Tailwind.
+- Highly optimized SEO.
 
-- Diseño limpio y simple.
-- Full Responsive.
-- Rápida y eficiente gracias a Astro.
-- Customizable con Tailwind.
-- SEO altamente optimizado.
-
-## ⚓ Puntaje en Lighthouse
-
+## ⚓ Lighthouse Score
 <p align="center">
 	<img width="600" alt="Lighthouse Score" src="https://raw.githubusercontent.com/vasquez-esteban/kreativ-software/master/lighthouse-score.svg"/>
 </p>
 
-## 🚀 Estructura del Proyecto
-
+## 🚀 Project Structure
 ```text
 /
 ├── public/
@@ -39,19 +34,18 @@ Kreatif es una Landing page de alto desempeño hecha con Astro y Tailwind. Está
 │   └── pages/
 │       └── index.astro
 └── package.json
-```
 
-## 🧞 Comandos
+## 🧞 Commands
 
-Para correr la aplicación en un entorno local
+To run locally:
 
 | Comando          | Acción                                       |
 | :--------------- | :------------------------------------------- |
-| `git clone repo` | Clonar Repositorio                           |
-| `cd repo`        | Entrar al directorio base                    |
-| `npm install`    | Instalar Dependencias                        |
-| `npm run dev`    | Correr el servidor local en `localhost:4321` |
+| `git clone repo` | Clone Repo                          |
+| `cd repo`        | Access root dir                    |
+| `npm install`    | Install Deps                        |
+| `npm run dev`    | Run locally in `localhost:4321` |
 
-## Más información
+## More information
 
-- Licencia y Crédito en el footer de la Landing Page.
+- License y Ack in the Landig Page's footer.
