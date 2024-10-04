@@ -49,4 +49,4 @@ To run locally:
 
 ## More information
 
-- License y Ack in the Landig Page's footer.
+- License & Credits in the Landig Page's footer.
